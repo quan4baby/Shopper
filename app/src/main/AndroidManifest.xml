@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopper">
         <activity
+            android:name=".ViewList"
+            android:label="@string/title_activity_view_list"
+            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
+        <activity
             android:name=".CreateList"
             android:label="@string/title_activity_create_list"
-            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
+            android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
