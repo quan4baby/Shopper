@@ -18,4 +18,6 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+    <string name="title_activity_view_item">View Item</string>
+    <string name="delete_item">Delete Item</string>
 </resources>
