@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class ViewItem extends AppCompatActivity {
 
@@ -67,7 +68,7 @@ public class ViewItem extends AppCompatActivity {
         priceEditText = (EditText) findViewById(R.id.priceEditText);
         quantityEditText = (EditText) findViewById(R.id.quantityEditText);
 
-        // diable EditTexts
+        // disable EditTexts
         nameEditText.setEnabled(false);
         priceEditText.setEnabled(false);
         quantityEditText.setEnabled(false);
@@ -75,7 +76,10 @@ public class ViewItem extends AppCompatActivity {
         // call the DBHandler method getShoppingListItem
         Cursor cursor = dbHandler.getShoppingListItem((int) id);
 
-        // get the name, price, and quantity in nthe Cursor and store them in Strings
+        // move to the first row in the Cursor
+        cursor.moveToFirst();
+
+        // get the name, price, and quantity in the Cursor and store them in Strings
         name = cursor.getString(cursor.getColumnIndex("name"));
         price = cursor.getString(cursor.getColumnIndex("price"));
         quantity = cursor.getString(cursor.getColumnIndex("quantity"));
@@ -132,8 +136,18 @@ public class ViewItem extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method gets called when the delete button in the Acdtion Bar of the
+     * View Item actiivty gets clicked. It declares a row in the shoppinglistitem
+     * table
+     * @param menuItem delete item menu item
+     */
     public void deleteItem(MenuItem menuItem) {
 
+        // delete shopping list item from database
+        dbHandler.deleteShoppingListItem((int) id);
 
+        // display a toast "Item deleted!"
+        Toast.makeText(this, "Item Deleted!", Toast.LENGTH_LONG).show();
     }
 }

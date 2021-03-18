@@ -61,10 +61,13 @@
                 android:layout_height="wrap_content"
                 android:text="Quantity" />
 
-            <TextView
+            <EditText
                 android:id="@+id/quantityEditText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
         </TableRow>
 
     </TableLayout>

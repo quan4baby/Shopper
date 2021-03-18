@@ -96,6 +96,9 @@ public class ViewList extends AppCompatActivity {
 
             }
         });
+
+        // set the subtitle to the total cost of the shopping list
+        toolbar.setSubtitle("Total Cost: $" + dbHandler.getShoppingListTotalCost((int) id));
     }
 
     /**
@@ -176,5 +179,20 @@ public class ViewList extends AppCompatActivity {
             // display Toast indicating item is purchased
             Toast.makeText(this, "Item purchased!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    /**
+     * This method gets called when the delete button in the Action Bar of the
+     * View List activity gets clicked. It deletes a row in the shoppinglistitem
+     * and shoppinglist tables.
+     * @param menuItem delete list menu item
+     */
+    public void deleteList(MenuItem menuItem) {
+
+        // delete shopping list from database
+        dbHandler.deleteShoppingList((int) id);
+
+        // display a toast "List deleted!"
+        Toast.makeText(this, "List Deleted!", Toast.LENGTH_LONG).show();
     }
 }

@@ -40,7 +40,7 @@ public class AddItem extends AppCompatActivity implements AdapterView.OnItemSele
     // declare Spinner
     Spinner quantitySpinner;
 
-    // declare a string to sotre quantity selected in Spinner
+    // declare a string to store quantity selected in Spinner
     String quantity;
 
     @Override
