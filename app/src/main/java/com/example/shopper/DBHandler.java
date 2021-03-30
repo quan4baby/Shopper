@@ -369,16 +369,38 @@ public class DBHandler extends SQLiteOpenHelper {
             totalCost += (c.getDouble(c.getColumnIndex("price")) *
                     (c.getInt(c.getColumnIndex("quantity"))));
 
-            //conver the total cost to a String
-            cost = String.valueOf(totalCost);
-
-            // close database reference
-            db.close();
-
         }
+        //conver the total cost to a String
+        cost = String.valueOf(totalCost);
+
+        // close database reference
+        db.close();
 
         // return String
         return cost;
 
     }
+
+    /**
+     * This method gets called when a shopping list item is clicked in the ViewList activity
+     * @param listId database id of the shopping list on which the shopping list item exists
+     * @return number of unpurchased shopping list items on the specified shopping list
+     */
+     public int getUnpurchasedItems (Integer listId){
+
+         // get reference to the shopper database
+         SQLiteDatabase db = getWritableDatabase();
+
+         // define select statement
+         String query = "SELECT * FROM " + TABLE_SHOPPING_LIST_ITEM +
+                 " WHERE " + COLUMN_ITEM_HAS + " = \"false\" " +
+                 " AND " + COLUMN_ITEM_LIST_ID + " = " + listId;
+
+         // execute select statement and store its return in aCursor
+         Cursor cursor = db.rawQuery(query, null);
+
+         // return a count of the number of items in the Cursor
+         return cursor.getCount();
+
+     }
 }
